@@ -15,7 +15,7 @@ class Buttons extends StatelessWidget {
               ? print('data')
               : Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => VirtualLocation()),
+                  MaterialPageRoute(builder: (context) => MyApp()),
                 );
         },
       ),
