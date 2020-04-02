@@ -25,8 +25,7 @@ class Geocode extends StatefulWidget {
 }
 
 class _GeocodeState extends State<Geocode> {
-  String url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/meerut.json?access_token=';
-  var latitude , longitude , location;
+  var latitude , longitude;
 
   @override
   void initState() {
@@ -35,18 +34,19 @@ class _GeocodeState extends State<Geocode> {
   }
 
   Future<http.Response> makeRequest() async {
-    final apiCall = await http.get(url);
-    final response = jsonDecode(apiCall.body);
+    String url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/meerut.json?access_token=pk.eyJ1IjoiZ2FyZ3NobG9rIiwiYSI6ImNrMm5iZ2Y2czByMWczbW11eWJiM3NuZTEifQ.kqivrVCSR9qlIRtV9S-3tw';
 
-    latitude = response["features"][0]['center'][1];
-    longitude = response["features"][0]['center'][0];
-    location = response["features"][0]['place_name'];
+    final api1Call = await http.get(url);
+    final response1 = jsonDecode(api1Call.body);
 
-    String url1='https://api.darksky.net/forecast//$latitude,$longitude?units=si';
+    latitude = response1["features"][0]['center'][1];
+    longitude = response1["features"][0]['center'][0];
 
-    final apiCall1 = await http.get(url1);
-    final response1 = jsonDecode(apiCall1.body);
-    print(response1);
+    String url1='https://api.darksky.net/forecast/f88dd069269d95c9b6eb5b58f0e0f52e/$latitude,$longitude?units=si';
+
+    final api2Call = await http.get(url1);
+    final response2 = jsonDecode(api2Call.body);
+    print(response2);
   }
 
   @override
