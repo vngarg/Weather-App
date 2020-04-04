@@ -1,10 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:weathe_app/UI/WeatherScreen.dart';
 import 'package:weathe_app/Widgets/Button.dart';
 import 'package:weathe_app/Widgets/TextField.dart';
-import 'package:http/http.dart' as http;
 
 class MyApp extends StatelessWidget {
   @override
@@ -25,26 +22,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final location = TextEditingController();
-  var latitude, longitude;
-
-  Future<http.Response> makeRequest() async {
-    String url =
-        'https://api.mapbox.com/geocoding/v5/mapbox.places/${location.text}.json?access_token=';
-
-    final api1Call = await http.get(url);
-    final response1 = jsonDecode(api1Call.body);
-
-    latitude = response1["features"][0]['center'][1];
-    longitude = response1["features"][0]['center'][0];
-    // location = response1["features"][0]['place_name'];
-
-    String url1 =
-        'https://api.darksky.net/forecast//$latitude,$longitude?units=si';
-
-    final api2Call = await http.get(url1);
-    final response2 = jsonDecode(api2Call.body);
-    print(response2);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,8 +35,11 @@ class _HomeScreenState extends State<HomeScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              RaisedButton(child: Text('Get Weather'), onPressed: makeRequest),
-              // Buttons(data: 'Get Map'),
+              Buttons(
+                data: 'Get Weather',
+                location: location.text,
+              ),
+              Buttons(data: 'Get Map', location: location.text),
             ],
           ),
           Container(

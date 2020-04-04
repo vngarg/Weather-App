@@ -3,7 +3,8 @@ import 'package:weathe_app/Backend/Geocode.dart';
 
 class Buttons extends StatelessWidget {
   final String data;
-  Buttons({Key key, this.data}) : super(key: key);
+  final String location;
+  Buttons({Key key, this.data, this.location}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,8 @@ class Buttons extends StatelessWidget {
               ? print('data')
               : Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MyApp()),
+                  MaterialPageRoute(
+                      builder: (context) => BackendGeocode(location: location)),
                 );
         },
       ),
