@@ -6,23 +6,57 @@ import 'package:weathe_app/Widgets/WeatherButton.dart';
 void main() => runApp(WeatherDisplay());
 
 class WeatherDisplay extends StatelessWidget {
-  final String response;
-  WeatherDisplay({Key key, this.response}) : super(key: key);
+  final String hourSummary;
+  final int hourPrecipetation;
+  final double hourTemp,
+      hourHumidity,
+      hourPressure,
+      hourVisibility;
+  WeatherDisplay(
+      {Key key,
+      this.hourSummary,
+      this.hourHumidity,
+      this.hourPrecipetation,
+      this.hourPressure,
+      this.hourTemp,
+      this.hourVisibility})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.cyan,
       appBar: AppBar(
         title: Text('Weather'),
       ),
-      body: Weather(response: response),
+      body: Weather(
+        hourHumidity: hourHumidity,
+        hourPrecipetation: hourPrecipetation,
+        hourPressure: hourPressure,
+        hourSummary: hourSummary,
+        hourTemp: hourTemp,
+        hourVisibility: hourVisibility,
+      ),
     );
   }
 }
 
 class Weather extends StatelessWidget {
-  final String response;
-  Weather({Key key, this.response}) : super(key: key);
+  final String hourSummary;
+  final int hourPrecipetation;
+  final double hourTemp,
+      hourHumidity,
+      hourPressure,
+      hourVisibility;
+  Weather(
+      {Key key,
+      this.hourSummary,
+      this.hourHumidity,
+      this.hourPrecipetation,
+      this.hourPressure,
+      this.hourTemp,
+      this.hourVisibility})
+      : super(key: key);
 
   @override
   void initState() {
@@ -35,12 +69,33 @@ class Weather extends StatelessWidget {
       children: <Widget>[
         Row(
           children: <Widget>[
-            WeatherButton(data: 'Current Weather' , response: response),
-            WeatherButton(data: 'Weakly Weather' , response: response,)
+            WeatherButton(
+              data: 'Current Weather',
+              hourHumidity: hourHumidity,
+              hourPrecipetation: hourPrecipetation,
+              hourPressure: hourPressure,
+              hourSummary: hourSummary,
+              hourTemp: hourTemp,
+              hourVisibility: hourVisibility,
+            ),
+            WeatherButton(
+              data: 'Weakly Weather',
+              hourHumidity: hourHumidity,
+              hourPrecipetation: hourPrecipetation,
+              hourPressure: hourPressure,
+              hourSummary: hourSummary,
+              hourTemp: hourTemp,
+              hourVisibility: hourVisibility,
+            )
           ],
         ),
         Expanded(
-          child: WeaklyWeather(context , response),
+          child: CurrentWeather(context, hourSummary,
+      hourPrecipetation,
+      hourTemp,
+      hourHumidity,
+      hourPressure,
+      hourVisibility),
         ),
       ],
     );
