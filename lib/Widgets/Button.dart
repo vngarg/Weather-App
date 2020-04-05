@@ -17,7 +17,7 @@ class Buttons extends StatelessWidget {
               : Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => BackendGeocode(location: location)),
+                      builder: (context) => Geocode(location: location)),
                 );
         },
       ),

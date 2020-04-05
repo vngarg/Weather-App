@@ -24,7 +24,10 @@ Widget CurrentWeather(context, hourSummary, hourPrecipetation, hourTemp,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text('Summary:    ' , style: TextStyle(fontWeight: FontWeight.bold),),
+                Text(
+                  'Summary:    ',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
                 FilterChip(
                   label: Text(
                     '$hourSummary',
@@ -37,7 +40,10 @@ Widget CurrentWeather(context, hourSummary, hourPrecipetation, hourTemp,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text('Temperature:    ' , style: TextStyle(fontWeight: FontWeight.bold),),
+                Text(
+                  'Temperature:    ',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
                 FilterChip(
                   label: Text(
                     '$hourTemp C',
@@ -50,7 +56,10 @@ Widget CurrentWeather(context, hourSummary, hourPrecipetation, hourTemp,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text('Precipitation Probability:    ' , style: TextStyle(fontWeight: FontWeight.bold),),
+                Text(
+                  'Precipitation Probability:    ',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
                 FilterChip(
                   label: Text(
                     '$hourPrecipetation %',
@@ -63,7 +72,10 @@ Widget CurrentWeather(context, hourSummary, hourPrecipetation, hourTemp,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text('Humidity:    ' , style: TextStyle(fontWeight: FontWeight.bold),),
+                Text(
+                  'Humidity:    ',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
                 FilterChip(
                   label: Text(
                     '$hourHumidity g/cc',
@@ -76,7 +88,10 @@ Widget CurrentWeather(context, hourSummary, hourPrecipetation, hourTemp,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text('Pressure:    ' , style: TextStyle(fontWeight: FontWeight.bold),),
+                Text(
+                  'Pressure:    ',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
                 FilterChip(
                   label: Text(
                     '$hourPressure Pa',
@@ -89,7 +104,10 @@ Widget CurrentWeather(context, hourSummary, hourPrecipetation, hourTemp,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text('Visibility:    ' , style: TextStyle(fontWeight: FontWeight.bold),),
+                Text(
+                  'Visibility:    ',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
                 FilterChip(
                   label: Text(
                     '$hourVisibility m',
