@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weathe_app/Backend/Geocode.dart';
+import 'package:weathe_app/Backend/Maps.dart';
 
 class Buttons extends StatelessWidget {
   final String data;
@@ -13,7 +14,11 @@ class Buttons extends StatelessWidget {
         child: Text(data),
         onPressed: () {
           data == 'Get Map'
-              ? print('data')
+              ? Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => MapsDemo(location: location)),
+                )
               : Navigator.push(
                   context,
                   MaterialPageRoute(
