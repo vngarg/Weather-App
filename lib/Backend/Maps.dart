@@ -26,23 +26,23 @@ class _MapsDemoState extends State<MapsDemo> {
 
   @override
   void initState() {
-    // makeRequest();
+    makeRequest();
     _onAddMarkerButtonPressed();
     super.initState();
   }
 
-  // Future<http.Response> makeRequest() async {
-  //   String url =
-  //       'https://api.mapbox.com/geocoding/v5/mapbox.places/${widget.location}.json?access_token=';
+  Future<http.Response> makeRequest() async {
+    String url =
+        'https://api.mapbox.com/geocoding/v5/mapbox.places/${widget.location}.json?access_token=';
 
-  //   final api1Call = await http.get(url);
-  //   final response1 = jsonDecode(api1Call.body);
+    final api1Call = await http.get(url);
+    final response1 = jsonDecode(api1Call.body);
 
-  //   latitude = response1["features"][0]['center'][1];
-  //   longitude = response1["features"][0]['center'][0];
-  //   print(latitude);
-  //   print(longitude);
-  // }
+    latitude = response1["features"][0]['center'][1];
+    longitude = response1["features"][0]['center'][0];
+    print(latitude);
+    print(longitude);
+  }
 
   _onMapCreated(GoogleMapController controller) {
     _controller.complete(controller);
