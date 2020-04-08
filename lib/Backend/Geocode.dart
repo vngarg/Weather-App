@@ -45,14 +45,10 @@ class _GeocodeState extends State<Geocode> {
     final api1Call = await http.get(url);
     final response1 = jsonDecode(api1Call.body);
 
-    // print("HELLO WORLD..........");
-    //   print(latitude);
-    //   print("    ");
     latitude = response1["features"][0]['center'][1];
-      longitude = response1["features"][0]['center'][0];
+    longitude = response1["features"][0]['center'][0];
     if (latitude == null) {
-      // Scaffold.of(context).showSnackBar(
-      //     SnackBar(content: Text('Wrong Contact Number or OTP/PIN')));
+
       return null;
     } else {
       String url1 =
@@ -67,15 +63,13 @@ class _GeocodeState extends State<Geocode> {
         MaterialPageRoute(
             builder: (context) => WeatherDisplay(
                 hourSummary: response2['hourly']['summary'],
-                hourPrecipetation: response2['hourly']['data'][0]
-                    ['precipProbability'],
+                hourPrecipetation: response2['hourly']['data'][0]['precipProbability'],
                 hourTemp: response2['hourly']['data'][0]['temperature'],
                 hourHumidity: response2['hourly']['data'][0]['humidity'],
                 hourPressure: response2['hourly']['data'][0]['pressure'],
                 hourVisibility: response2['hourly']['data'][0]['visibility'],
                 weekSummary: response2['daily']['summary'],
-                weekPrecipitation: response2['daily']['data'][0]
-                    ['precipProbability'],
+                weekPrecipitation: response2['daily']['data'][0]['precipProbability'],
                 weekMaxTemp: response2['daily']['data'][0]['temperatureHigh'],
                 weekMinTemp: response2['daily']['data'][0]['temperatureLow'],
                 weekHumidity: response2['daily']['data'][0]['humidity'],

@@ -1,54 +1,41 @@
-import 'package:flutter/material.dart';
-import 'package:weathe_app/UI/HomeScreen.dart';
-
-void main() => runApp(WeatherApp());
-
-class WeatherApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Weather App',
-      theme: ThemeData(
-        primarySwatch: Colors.lightBlue
-      ),
-      home: MyApp()
-    );
-  }
-}
-
 // import 'package:flutter/material.dart';
+// import 'package:weathe_app/UI/HomeScreen.dart';
 
-// void main() {
-//   runApp(TabBarDemo());
-// }
+// void main() => runApp(WeatherApp());
 
-// class TabBarDemo extends StatelessWidget {
+// class WeatherApp extends StatelessWidget {
 //   @override
 //   Widget build(BuildContext context) {
 //     return MaterialApp(
-//       home: DefaultTabController(
-//         length: 3,
-//         child: Scaffold(
-//           appBar: AppBar(
-//             bottom: TabBar(
-//               tabs: [
-//                 Tab(icon: Icon(Icons.directions_car)),
-//                 Tab(icon: Icon(Icons.directions_transit)),
-//                 Tab(icon: Icon(Icons.directions_bike)),
-//               ],
-//             ),
-//             title: Text('Tabs Demo'),
-//           ),
-//           body: TabBarView(
-//             children: [
-//               Icon(Icons.directions_car),
-//               Icon(Icons.directions_transit),
-//               Icon(Icons.directions_bike),
-//             ],
-//           ),
-//         ),
+//       debugShowCheckedModeBanner: false,
+//       title: 'Weather App',
+//       theme: ThemeData(
+//         primarySwatch: Colors.lightBlue
 //       ),
+//       home: MyApp()
 //     );
 //   }
 // }
+
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:weathe_app/Bloc/bloc.dart';
+import 'package:weathe_app/Bloc/provider_bloc.dart';
+import 'package:weathe_app/UI/MainScreen.dart';
+
+import 'Bloc/location_bloc.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider<LocationBloc> (
+      bloc:LocationBloc(),
+      child: MaterialApp(
+        title: 'Demo for Bloc Pattern',
+        home: MainScreen(),
+      ),
+    );
+  }
+}
