@@ -17,7 +17,7 @@ class MapsDemo extends StatefulWidget {
 }
 
 class _MapsDemoState extends State<MapsDemo> {
-  static double latitude=5.02, longitude=45.02;
+  static double latitude, longitude;
   Completer<GoogleMapController> _controller = Completer();
   static LatLng _center = LatLng(latitude, longitude);
   final Set<Marker> _marker = {};
@@ -42,6 +42,7 @@ class _MapsDemoState extends State<MapsDemo> {
     longitude = response1["features"][0]['center'][0];
     print(latitude);
     print(longitude);
+    return null;
   }
 
   _onMapCreated(GoogleMapController controller) {

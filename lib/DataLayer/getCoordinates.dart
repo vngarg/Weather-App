@@ -22,9 +22,10 @@ class HttpClient {
           'https://api.darksky.net/forecast//${loc.latitude},${loc.longitude}?units=si';
 
       final api2Call = await http.get(url1);
+      print("....................................................................");
       final response2 = jsonDecode(api2Call.body);
       print(response2);
       
-      return response2;
+      return  response2;
   }
 }

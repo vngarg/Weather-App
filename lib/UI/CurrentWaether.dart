@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 Widget CurrentWeather(context, hourSummary, hourPrecipetation, hourTemp,
-    hourHumidity, hourPressure, hourVisibility) {
+    hourHumidity, hourPressure, hourVisibility , location) {
   return Stack(children: <Widget>[
     Positioned(
       width: MediaQuery.of(context).size.width - 25,
@@ -21,6 +21,22 @@ Widget CurrentWeather(context, hourSummary, hourPrecipetation, hourTemp,
                   fontSize: 25.0,
                   fontWeight: FontWeight.bold,
                 )),
+                Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  'Location:    ',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                FilterChip(
+                  label: Text(
+                    '$location',
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  onSelected: (null),
+                ),
+              ],
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[

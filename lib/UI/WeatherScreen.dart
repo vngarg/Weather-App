@@ -5,7 +5,7 @@ import 'package:weathe_app/UI/WeaklyWeather.dart';
 void main() => runApp(WeatherDisplay());
 
 class WeatherDisplay extends StatelessWidget {
-  final String hourSummary, weekSummary;
+  final String hourSummary, weekSummary , location;
   var hourPrecipetation,
       hourTemp,
       hourHumidity,
@@ -31,7 +31,8 @@ class WeatherDisplay extends StatelessWidget {
       this.weekPrecipitation,
       this.weekPressure,
       this.weekSummary,
-      this.weekVisibility})
+      this.weekVisibility,
+      this.location})
       : super(key: key);
 
   @override
@@ -55,9 +56,9 @@ class WeatherDisplay extends StatelessWidget {
         body: TabBarView(
           children: [
             CurrentWeather(context, hourSummary, hourPrecipetation, hourTemp,
-                hourHumidity, hourPressure, hourVisibility),
+                hourHumidity, hourPressure, hourVisibility , location),
             WeaklyWeather(context, weekSummary, weekPrecipitation, weekMaxTemp,
-                weekMinTemp, weekHumidity, weekPressure, weekVisibility),
+                weekMinTemp, weekHumidity, weekPressure, weekVisibility , location),
           ],
         ),
       ),

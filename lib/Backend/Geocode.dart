@@ -4,43 +4,23 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:weathe_app/UI/WeatherScreen.dart';
 
-void main() => runApp(BackendGeocode());
+class Geocode {
+  String location;
+  var latitude, longitude, context;
 
-class BackendGeocode extends StatelessWidget {
-  final String location;
-  BackendGeocode({Key key, this.location}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Center(child: Text('Get Weather')),
-      ),
-      body: Geocode(location: location),
-    );
-  }
-}
-
-class Geocode extends StatefulWidget {
-  final String location;
-  Geocode({Key key, this.location}) : super(key: key);
-
-  @override
-  _GeocodeState createState() => _GeocodeState();
-}
-
-class _GeocodeState extends State<Geocode> {
-  var latitude, longitude;
-
-  @override
-  void initState() {
+  Geocode(location, context) {
+    this.location = location;
+    this.context = context;
+    print(location);
     makeRequest();
-    super.initState();
   }
 
   Future<http.Response> makeRequest() async {
+    Scaffold.of(context).showSnackBar(
+        SnackBar(content: Text('Loading....')));
+
     String url =
-        'https://api.mapbox.com/geocoding/v5/mapbox.places/${widget.location}.json?access_token=';
+        'https://api.mapbox.com/geocoding/v5/mapbox.places/$location.json?access_token=';
 
     final api1Call = await http.get(url);
     final response1 = jsonDecode(api1Call.body);
@@ -48,8 +28,8 @@ class _GeocodeState extends State<Geocode> {
     latitude = response1["features"][0]['center'][1];
     longitude = response1["features"][0]['center'][0];
     if (latitude == null) {
-
-      return null;
+      Scaffold.of(context).showSnackBar(SnackBar(
+          content: Text("Can't get the Location. Please try again....")));
     } else {
       String url1 =
           'https://api.darksky.net/forecast//$latitude,$longitude?units=si';
@@ -63,13 +43,15 @@ class _GeocodeState extends State<Geocode> {
         MaterialPageRoute(
             builder: (context) => WeatherDisplay(
                 hourSummary: response2['hourly']['summary'],
-                hourPrecipetation: response2['hourly']['data'][0]['precipProbability'],
+                hourPrecipetation: response2['hourly']['data'][0]
+                    ['precipProbability'],
                 hourTemp: response2['hourly']['data'][0]['temperature'],
                 hourHumidity: response2['hourly']['data'][0]['humidity'],
                 hourPressure: response2['hourly']['data'][0]['pressure'],
                 hourVisibility: response2['hourly']['data'][0]['visibility'],
                 weekSummary: response2['daily']['summary'],
-                weekPrecipitation: response2['daily']['data'][0]['precipProbability'],
+                weekPrecipitation: response2['daily']['data'][0]
+                    ['precipProbability'],
                 weekMaxTemp: response2['daily']['data'][0]['temperatureHigh'],
                 weekMinTemp: response2['daily']['data'][0]['temperatureLow'],
                 weekHumidity: response2['daily']['data'][0]['humidity'],
@@ -77,10 +59,5 @@ class _GeocodeState extends State<Geocode> {
                 weekVisibility: response2['daily']['data'][0]['visibility'])),
       );
     }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }
