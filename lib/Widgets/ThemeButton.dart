@@ -35,8 +35,8 @@ class _AppModeState extends State<AppMode> {
           Mode().getBrightness();
           // Mode().getColors();
         },
-        activeTrackColor: Colors.green,
-        activeColor: Colors.red,
+        activeTrackColor: Colors.blue,
+        activeColor: Colors.white,
       ),
     );
   }

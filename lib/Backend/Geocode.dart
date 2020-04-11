@@ -15,14 +15,15 @@ class Geocode {
     
     if (location == '') {
       Scaffold.of(context).showSnackBar(SnackBar(
-          content: Text("Can't get the Location. Please try again....")));
+          content: Text("Can't get the Location. Please try again...."),));
     } else {
       makeRequest();
     }
   }
 
   Future<http.Response> makeRequest() async {
-    Scaffold.of(context).showSnackBar(SnackBar(content: Text('Loading....')));
+    Scaffold.of(context).showSnackBar(SnackBar(content: Text('Loading....'),
+    ));
 
     String url =
         'https://api.mapbox.com/geocoding/v5/mapbox.places/$location.json?access_token=';

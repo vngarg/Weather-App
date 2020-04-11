@@ -11,7 +11,8 @@ Widget Buttons(data, location, context) {
         data == 'Get Map'
             // ? Scaffold.of(context).showSnackBar(SnackBar(
             //     content: Text(
-            //         "Developer is Working on Maps. So can't be accessed now.")))
+            //         "Developer is Working on Maps. So can't be accessed now."),
+            // backgroundColor: Mode().getColors(),))
             ? Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => Maps()),

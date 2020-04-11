@@ -7,17 +7,34 @@ class Location {
 }
 
 class Mode {
-  static Color color;
+  static Color color, textColor;
   static bool isSwitched = true;
   static Brightness bright = Brightness.light;
 
   Brightness getBrightness() {
-    if(!isSwitched) {
+    if (!isSwitched) {
       bright = Brightness.dark;
-    }
-    else {
+    } else {
       bright = Brightness.light;
     }
     return bright;
+  }
+
+  Color getColors() {
+    if (!isSwitched) {
+      color = Colors.grey[800];
+    } else {
+      color = Colors.blue;
+    }
+    return color;
+  }
+
+  Color getTextColor() {
+    if (!isSwitched) {
+      textColor = Colors.white;
+    } else {
+      textColor = Colors.black;
+    }
+    return textColor;
   }
 }

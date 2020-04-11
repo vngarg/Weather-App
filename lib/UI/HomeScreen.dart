@@ -41,7 +41,13 @@ class _HomeScreenState extends State<HomeScreen> {
               Buttons( 'Get Map', location.text , context),
             ],
           ),
-          AppMode(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text('Dark Mode'),
+              AppMode(),
+            ],
+          ),
           Container(
             height: 16.0,
             child: Divider(

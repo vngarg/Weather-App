@@ -5,6 +5,7 @@ import 'package:weathe_app/UI/HomeScreen.dart';
 void main() => runApp(WeatherApp());
 
 class WeatherApp extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,7 +14,7 @@ class WeatherApp extends StatelessWidget {
         theme: ThemeData(
           // primarySwatch: Colors.lightBlue
           brightness: Mode().getBrightness(),
-          // primaryColor: Colors.blue,
+          primaryColor: Mode().getColors(),
         ),
         home: MyApp());
   }
