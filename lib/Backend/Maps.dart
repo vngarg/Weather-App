@@ -21,18 +21,13 @@ class Maps extends StatelessWidget {
 }
 
 class Map extends StatefulWidget {
-  @override
-  State<Map> createState() => MapState();
-}
-
-class MapState extends State<Map> {
 
   @override
   void initState() {
     print('YO YO..................... ${Location.latitude}');
     makeRequest();
     print('MAJA AA GAYA..................... ${Location.latitude}');
-    super.initState();
+    // super.initState();
   }
 
   Future<http.Response> makeRequest() async {
@@ -48,6 +43,12 @@ class MapState extends State<Map> {
     Location.longitude = response1["features"][0]['center'][0];
     print('HELLO WORLD..................... ${Location.latitude}');
   }
+
+  @override
+  State<Map> createState() => MapState();
+}
+
+class MapState extends State<Map> {
 
   Completer<GoogleMapController> _controller = Completer();
 

@@ -3,6 +3,7 @@ import 'package:weathe_app/DataLayer/location.dart';
 import 'package:weathe_app/UI/WeatherScreen.dart';
 import 'package:weathe_app/Widgets/Button.dart';
 import 'package:weathe_app/Widgets/TextField.dart';
+import 'package:weathe_app/Widgets/ThemeButton.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -40,6 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Buttons( 'Get Map', location.text , context),
             ],
           ),
+          AppMode(),
           Container(
             height: 16.0,
             child: Divider(
