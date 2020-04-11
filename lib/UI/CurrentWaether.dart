@@ -1,7 +1,27 @@
 import 'package:flutter/material.dart';
 
 Widget CurrentWeather(context, hourSummary, hourPrecipetation, hourTemp,
-    hourHumidity, hourPressure, hourVisibility , location) {
+    hourHumidity, hourPressure, hourVisibility, location) {
+      
+  Details(text, filterchipText) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Text(
+          '$text:    ',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        FilterChip(
+          label: Text(
+            '$filterchipText',
+            style: TextStyle(color: Colors.black),
+          ),
+          onSelected: (null),
+        ),
+      ],
+    );
+  }
+
   return Stack(children: <Widget>[
     Positioned(
       width: MediaQuery.of(context).size.width - 25,
@@ -21,118 +41,13 @@ Widget CurrentWeather(context, hourSummary, hourPrecipetation, hourTemp,
                   fontSize: 25.0,
                   fontWeight: FontWeight.bold,
                 )),
-                Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  'Location:    ',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                FilterChip(
-                  label: Text(
-                    '$location',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  onSelected: (null),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  'Summary:    ',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                FilterChip(
-                  label: Text(
-                    '$hourSummary',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  onSelected: (null),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  'Temperature:    ',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                FilterChip(
-                  label: Text(
-                    '$hourTemp C',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  onSelected: (null),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  'Precipitation Probability:    ',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                FilterChip(
-                  label: Text(
-                    '$hourPrecipetation %',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  onSelected: (null),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  'Humidity:    ',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                FilterChip(
-                  label: Text(
-                    '$hourHumidity g/cc',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  onSelected: (null),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  'Pressure:    ',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                FilterChip(
-                  label: Text(
-                    '$hourPressure Pa',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  onSelected: (null),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  'Visibility:    ',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                FilterChip(
-                  label: Text(
-                    '$hourVisibility m',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  onSelected: (null),
-                ),
-              ],
-            )
+            Details('Location', '$location'),
+            Details('Summary', '$hourSummary'),
+            Details('Temperature', '$hourTemp C'),
+            Details('Precipitation Probability', '$hourPrecipetation %'),
+            Details('Humidity', '$hourHumidity g/cc'),
+            Details('Pressure', '$hourPressure Pa'),
+            Details('Visibility', '$hourVisibility m')
           ],
         ),
       ),

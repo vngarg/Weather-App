@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weathe_app/DataLayer/location.dart';
 import 'package:weathe_app/UI/WeatherScreen.dart';
 import 'package:weathe_app/Widgets/Button.dart';
 import 'package:weathe_app/Widgets/TextField.dart';
@@ -28,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Container(
       child: Column(
         children: <Widget>[
-          TextFields('Enter Your Location', location),
+          TextFields('Enter Your Location', Location.location),
           Container(
             height: 16.0,
           ),
@@ -52,27 +53,6 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-          Row(
-            children: <Widget>[
-              Container(
-                width: MediaQuery.of(context).size.width * 0.75,
-              ),
-              Container(
-                child: FloatingActionButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => WeatherDisplay()),
-                    );
-                  },
-                  child: Icon(Icons.navigate_next),
-                ),
-              ),
-            ],
-          ),
-          Container(
-            height: 16.0,
-          )
         ],
       ),
     );

@@ -1,7 +1,26 @@
 import 'package:flutter/material.dart';
 
 Widget WeaklyWeather(context, weekSummary, weekPrecipitation, weekMaxTemp,
-    weekMinTemp, weekHumidity, weekPressure, weekVisibility , location) {
+    weekMinTemp, weekHumidity, weekPressure, weekVisibility, location) {
+  Details(text, filterchipText) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Text(
+          '$text:    ',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        FilterChip(
+          label: Text(
+            '$filterchipText',
+            style: TextStyle(color: Colors.black),
+          ),
+          onSelected: (null),
+        ),
+      ],
+    );
+  }
+
   return Stack(children: <Widget>[
     Positioned(
       width: MediaQuery.of(context).size.width - 25,
@@ -21,113 +40,14 @@ Widget WeaklyWeather(context, weekSummary, weekPrecipitation, weekMaxTemp,
                   fontSize: 25.0,
                   fontWeight: FontWeight.bold,
                 )),
-                Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  'Location:    ',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                FilterChip(
-                  label: Text(
-                    '$location',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  onSelected: (null),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text('Summary:    ' , style: TextStyle(fontWeight: FontWeight.bold),),
-                FilterChip(
-                  label: Text(
-                    '$weekSummary',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  onSelected: (null),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text('Minnimum Temperature:    ' , style: TextStyle(fontWeight: FontWeight.bold),),
-                FilterChip(
-                  label: Text(
-                    '$weekMinTemp C',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  onSelected: (null),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text('Maximum Temperature:    ' , style: TextStyle(fontWeight: FontWeight.bold),),
-                FilterChip(
-                  label: Text(
-                    '$weekMaxTemp C',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  onSelected: (null),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text('Precipitation Probability:    ' , style: TextStyle(fontWeight: FontWeight.bold),),
-                FilterChip(
-                  label: Text(
-                    '$weekPrecipitation %',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  onSelected: (null),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text('Humidity:    ' , style: TextStyle(fontWeight: FontWeight.bold),),
-                FilterChip(
-                  label: Text(
-                    '$weekHumidity g/cc',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  onSelected: (null),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text('Pressure:    ' , style: TextStyle(fontWeight: FontWeight.bold),),
-                FilterChip(
-                  label: Text(
-                    '$weekPressure Pa',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  onSelected: (null),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text('Visibility:    ' , style: TextStyle(fontWeight: FontWeight.bold),),
-                FilterChip(
-                  label: Text(
-                    '$weekVisibility m',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                  onSelected: (null),
-                ),
-              ],
-            )
+            Details('Location', '$location'),
+            Details('Summary', '$weekSummary'),
+            Details('Minnimum Temperature', '$weekMinTemp C'),
+            Details('Maximum Temperature', '$weekMaxTemp C'),
+            Details('Precipitation Probability', '$weekPrecipitation %'),
+            Details('Humidity', '$weekHumidity g/cc'),
+            Details('Pressure', '$weekPressure Pa'),
+            Details('Visibility', '$weekVisibility m'),
           ],
         ),
       ),
