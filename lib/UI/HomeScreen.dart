@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weathe_app/DataLayer/location.dart';
-import 'package:weathe_app/UI/WeatherScreen.dart';
 import 'package:weathe_app/Widgets/Button.dart';
 import 'package:weathe_app/Widgets/TextField.dart';
-import 'package:weathe_app/Widgets/ThemeButton.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -37,15 +35,8 @@ class _HomeScreenState extends State<HomeScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              Buttons( 'Get Weather', location.text, context ),
-              Buttons( 'Get Map', location.text , context),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text('Dark Mode'),
-              AppMode(),
+              Buttons('Get Weather', location.text, context),
+              Buttons('Get Map', location.text, context),
             ],
           ),
           Container(

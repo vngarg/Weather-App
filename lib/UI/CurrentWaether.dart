@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:weathe_app/DataLayer/location.dart';
 
 Widget CurrentWeather(context, hourSummary, hourPrecipetation, hourTemp,
     hourHumidity, hourPressure, hourVisibility, location) {
+      
   Details(text, filterchipText) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -14,7 +14,7 @@ Widget CurrentWeather(context, hourSummary, hourPrecipetation, hourTemp,
         FilterChip(
           label: Text(
             '$filterchipText',
-            style: TextStyle(color: Mode().getTextColor()),
+            style: TextStyle(color: Colors.black),
           ),
           onSelected: (null),
         ),

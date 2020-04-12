@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:weathe_app/DataLayer/location.dart';
 
 Widget WeaklyWeather(context, weekSummary, weekPrecipitation, weekMaxTemp,
     weekMinTemp, weekHumidity, weekPressure, weekVisibility, location) {
@@ -14,7 +13,7 @@ Widget WeaklyWeather(context, weekSummary, weekPrecipitation, weekMaxTemp,
         FilterChip(
           label: Text(
             '$filterchipText',
-            style: TextStyle(color: Mode().getTextColor()),
+            style: TextStyle(color: Colors.black),
           ),
           onSelected: (null),
         ),

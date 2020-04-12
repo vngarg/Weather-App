@@ -6,12 +6,13 @@ import 'package:weathe_app/DataLayer/location.dart';
 import 'package:weathe_app/UI/WeatherScreen.dart';
 
 class Geocode {
-  String location;
+  String location , text;
   var context;
 
-  Geocode(location, context) {
+  Geocode(location, context , text) {
     this.location = location;
     this.context = context;
+    this.text = text;
     
     if (location == '') {
       Scaffold.of(context).showSnackBar(SnackBar(
@@ -41,7 +42,8 @@ class Geocode {
     final response2 = jsonDecode(api2Call.body);
     // print(response2);
 
-    Navigator.push(
+    if(text == 'For Weather') {
+      Navigator.push(
       context,
       MaterialPageRoute(
           builder: (context) => WeatherDisplay(
@@ -63,5 +65,6 @@ class Geocode {
                 location: location,
               )),
     );
+    }
   }
 }
