@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:weathe_app/Backend/Maps.dart';
 import 'package:weathe_app/DataLayer/location.dart';
@@ -31,7 +32,7 @@ class Geocode {
     ));
 
     String url =
-        'https://api.mapbox.com/geocoding/v5/mapbox.places/$location.json?access_token=';
+        'https://api.mapbox.com/geocoding/v5/mapbox.places/$location.json?access_token=${DotEnv().env['GeoCodeAPI']}';
 
     final api1Call = await http.get(url);
     final response1 = jsonDecode(api1Call.body);
@@ -40,7 +41,7 @@ class Geocode {
     Location.longitude = response1["features"][0]['center'][0];
 
     String url1 =
-        'https://api.darksky.net/forecast//${Location.latitude},${Location.longitude}?units=si';
+        'https://api.darksky.net/forecast/${DotEnv().env['WeatherAPI']}/${Location.latitude},${Location.longitude}?units=si';
 
     final api2Call = await http.get(url1);
     final response2 = jsonDecode(api2Call.body);
