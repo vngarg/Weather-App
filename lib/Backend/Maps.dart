@@ -1,11 +1,8 @@
 import 'dart:async';
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:weathe_app/Backend/Geocode.dart';
 import 'package:weathe_app/DataLayer/location.dart';
-import 'package:http/http.dart' as http;
 
 void main() => runApp(Maps());
 
@@ -36,15 +33,12 @@ class MapState extends State<Map> {
 
   static final CameraPosition _kLake = CameraPosition(
       bearing: 192.8334901395799,
-      target: LatLng(28.9845, 77.7064),
+      target: LatLng(Location.latitude, Location.longitude),
       tilt: 59.440717697143555,
       zoom: 19.151926040649414);
 
   @override
   Widget build(BuildContext context) {
-    // makeRequest();
-    print('BEFORE.................');
-    Geocode(Location.location.text , context , 'For Maps');
     
     return new Scaffold(
       body: GoogleMap(
@@ -56,7 +50,7 @@ class MapState extends State<Map> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: _goToTheLake,
-        label: Text('To the lake!'),
+        label: Text('To ${Location.location}!'),
         icon: Icon(Icons.directions_boat),
       ),
     );

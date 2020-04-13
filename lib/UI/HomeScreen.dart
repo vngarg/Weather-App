@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               Buttons('Get Weather', location.text, context),
-              Buttons('Get Map', location.text, context),
+              // Buttons('Get Map', location.text, context),
             ],
           ),
           Container(
