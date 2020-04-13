@@ -6,6 +6,6 @@ You can easily check the Weather of your district.
 
 ### App Display
 - ***Home Screen***<br>
-- [Home Screen](assets/HomeScreen.png)<br>
+![Home Screen](assets/HomeScreen.png)<br>
 - ***Weather Screen***<br>
-- [Weather Screen](assets/WeatherScreen.png)
+![Weather Screen](assets/WeatherScreen.png)
