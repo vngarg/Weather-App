@@ -1,8 +1,8 @@
 # weather App
 You can easily check the Weather of your district.
 
-## Getting Started
-- ***Download the API form the below link and install it on your device to get the App.***
+## Download APK
+![APK File](https://drive.google.com/file/d/1nYwI0JS2HjYb98YDYNS37aLLcUEmnuvQ/view?usp=sharing)
 
 ### App Display
 - ***Home Screen***<br>
